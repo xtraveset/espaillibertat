@@ -1,0 +1,27 @@
+:root {
+  --space-0: 4px;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+  --space-9: 64px;
+  --space-10: 80px;
+  --space-11: 96px;
+
+  --space-base: 8px;
+
+  /* Layout constants */
+  --layout-mobile-margin: 16px;
+  --layout-card-padding-compact: 16px;
+  --layout-card-padding-content: 24px;
+  --layout-card-padding-primary: 32px;
+  --layout-sidebar-width: 256px;
+  --layout-content-max: 1200px;
+  --layout-header-height: 56px;
+  --layout-touch-target-min: 44px;
+  --layout-desktop-target-min: 36px;
+}

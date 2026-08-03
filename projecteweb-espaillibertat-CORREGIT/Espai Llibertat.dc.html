@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>{{ t.metaTitle }}</title>
+  <meta name="description" content="{{ t.metaDesc }}"/>
+  <link rel="canonical" href="https://www.espaillibertat.es"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Espai Llibertat"/>
+  <meta property="og:title" content="{{ t.metaTitle }}"/>
+  <meta property="og:description" content="{{ t.metaDesc }}"/>
+  <meta property="og:image" content="uploads/Social Image.svg"/>
+  <meta property="og:locale" content="{{ t.ogLocale }}"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="stylesheet" href="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/styles.css">
+  <script src="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/_ds_bundle.js"></script>
+  <link rel="icon" type="image/svg+xml" href="uploads/Favicon.svg">
+  <meta name="ext-resource-dependency" content="uploads/segment-entrenadors.png" data-resource-id="segment_entrenadors">
+  <meta name="ext-resource-dependency" content="uploads/segment-fisio.png" data-resource-id="segment_fisio">
+  <meta name="ext-resource-dependency" content="uploads/segment-nutricio.png" data-resource-id="segment_nutricio">
+  <meta name="ext-resource-dependency" content="uploads/segment-beauty.png" data-resource-id="segment_beauty">
+  <meta name="ext-resource-dependency" content="uploads/service-residus.png" data-resource-id="service_residus">
+  <meta name="ext-resource-dependency" content="uploads/service-consumibles.png" data-resource-id="service_consumibles">
+  <meta name="ext-resource-dependency" content="uploads/service-sala-grupal.png" data-resource-id="service_sala_grupal">
+  <meta name="ext-resource-dependency" content="uploads/service-climatitzacio.png" data-resource-id="service_climatitzacio">
+  <meta name="ext-resource-dependency" content="uploads/service-entorn.png" data-resource-id="service_entorn">
+  <meta name="ext-resource-dependency" content="uploads/service-prereserva.png" data-resource-id="service_prereserva">
+  <meta name="ext-resource-dependency" content="uploads/slot-avatar-angels.webp" data-resource-id="slot_avatar_angels">
+  <meta name="ext-resource-dependency" content="uploads/slot-avatar-marti.webp" data-resource-id="slot_avatar_marti">
+  <meta name="ext-resource-dependency" content="uploads/WhatsApp Image 2026-07-28 at 17.45.24.jpeg" data-resource-id="WhatsApp_Image_2026_07_28_at_17_45_24">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-1.webp" data-resource-id="slot_gallery_1">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-2.webp" data-resource-id="slot_gallery_2">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-3.webp" data-resource-id="slot_gallery_3">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-4.webp" data-resource-id="slot_gallery_4">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-5.webp" data-resource-id="slot_gallery_5">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-6.webp" data-resource-id="slot_gallery_6">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-7.webp" data-resource-id="slot_gallery_7">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-8.webp" data-resource-id="slot_gallery_8">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-9.webp" data-resource-id="slot_gallery_9">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-10.webp" data-resource-id="slot_gallery_10">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-11.webp" data-resource-id="slot_gallery_11">
+  <meta name="ext-resource-dependency" content="uploads/slot-gallery-12.webp" data-resource-id="slot_gallery_12">
+  <template id="__bundler_thumbnail">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#0F766E"/><text x="100" y="115" font-family="sans-serif" font-size="72" font-weight="600" fill="#fff" text-anchor="middle">EL</text></svg>
+  </template>
+  <style>
+    @keyframes testimonial-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    body { margin: 0; background: var(--color-canvas); }
+    a { color: var(--color-primary); }
+    a:hover { color: var(--color-primary-hover); }
+  </style>
+</helmet>
+
+<div lang="{{ lang }}" style="font-family: var(--font-body); color: var(--color-ink); background: var(--color-canvas);">
+
+  <!-- NAV -->
+  <header style="min-height: 68px; display:flex; align-items:center; justify-content:space-between; padding: 12px clamp(20px, 6vw, 40px); border-bottom: 1px solid var(--color-border); background: var(--color-canvas); position: sticky; top:0; z-index: 30; gap:12px;">
+    <div style="display:flex; align-items:center; gap:10px; white-space:nowrap;">
+      <img src="uploads/Marca.svg" alt="Espai Llibertat" style="height:clamp(40px, 9vw, 64px); width:auto;"/>
+    </div>
+    <sc-if value="{{ showDesktopNav }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex; gap:20px; align-items:center; flex-wrap:wrap; justify-content:flex-end;">
+        <a href="#com-funciona" style="font-size:13px; font-weight:500; color: var(--color-ink-muted); text-decoration:none; white-space:nowrap;">{{ t.navComFunciona }}</a>
+        <a href="#professionals" style="font-size:13px; font-weight:500; color: var(--color-ink-muted); text-decoration:none; white-space:nowrap;">{{ t.navProfessionals }}</a>
+        <a href="#tarifes" style="font-size:13px; font-weight:500; color: var(--color-ink-muted); text-decoration:none; white-space:nowrap;">{{ t.navTarifes }}</a>
+        <a href="#faq" style="font-size:13px; font-weight:500; color: var(--color-ink-muted); text-decoration:none; white-space:nowrap;">{{ t.navFaq }}</a>
+        <a href="#ubicacio" style="font-size:13px; font-weight:500; color: var(--color-ink-muted); text-decoration:none; white-space:nowrap;">{{ t.navUbicacio }}</a>
+        <div role="group" aria-label="Idioma / Language" style="display:flex; border: 1px solid var(--color-border); border-radius: var(--radius-pill); overflow:hidden; flex-shrink:0;">
+          <button onClick="{{ setLangCa }}" style="border:none; cursor:pointer; padding:5px 12px; font-size:12px; font-weight:700; background:{{ caBg }}; color:{{ caColor }};">CA</button>
+          <button onClick="{{ setLangEs }}" style="border:none; cursor:pointer; padding:5px 12px; font-size:12px; font-weight:700; background:{{ esBg }}; color:{{ esColor }};">ES</button>
+        </div>
+        <a href="{{ mailtoReserva }}" style="text-decoration:none;">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" size="md" hint-size="160px,40px" style="white-space:nowrap;">{{ t.navReserva }}</x-import>
+        </a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleMobileMenu }}" aria-label="Menu" style="border:1px solid var(--color-border); background:var(--color-canvas); border-radius:var(--radius-md); width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="{{ mobileMenuIcon }}" size="20" color="var(--color-ink)" hint-size="20px,20px"></x-import>
+      </button>
+    </sc-if>
+  </header>
+  <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky; top:68px; z-index:29; background:var(--color-canvas); border-bottom:1px solid var(--color-border); padding:16px clamp(20px, 6vw, 40px); display:flex; flex-direction:column; gap:14px;">
+      <a href="#com-funciona" onClick="{{ closeMobileMenu }}" style="font-size:15px; font-weight:600; color:var(--color-ink); text-decoration:none;">{{ t.navComFunciona }}</a>
+      <a href="#professionals" onClick="{{ closeMobileMenu }}" style="font-size:15px; font-weight:600; color:var(--color-ink); text-decoration:none;">{{ t.navProfessionals }}</a>
+      <a href="#tarifes" onClick="{{ closeMobileMenu }}" style="font-size:15px; font-weight:600; color:var(--color-ink); text-decoration:none;">{{ t.navTarifes }}</a>
+      <a href="#faq" onClick="{{ closeMobileMenu }}" style="font-size:15px; font-weight:600; color:var(--color-ink); text-decoration:none;">{{ t.navFaq }}</a>
+      <a href="#ubicacio" onClick="{{ closeMobileMenu }}" style="font-size:15px; font-weight:600; color:var(--color-ink); text-decoration:none;">{{ t.navUbicacio }}</a>
+      <div role="group" aria-label="Idioma / Language" style="display:flex; border: 1px solid var(--color-border); border-radius: var(--radius-pill); overflow:hidden; width:fit-content;">
+        <button onClick="{{ setLangCa }}" style="border:none; cursor:pointer; padding:6px 14px; font-size:13px; font-weight:700; background:{{ caBg }}; color:{{ caColor }};">CA</button>
+        <button onClick="{{ setLangEs }}" style="border:none; cursor:pointer; padding:6px 14px; font-size:13px; font-weight:700; background:{{ esBg }}; color:{{ esColor }};">ES</button>
+      </div>
+      <a href="{{ mailtoReserva }}" onClick="{{ closeMobileMenu }}" style="text-decoration:none; display:grid; width:100%;">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" size="md" hint-size="100%,44px">{{ t.navReserva }}</x-import>
+      </a>
+    </div>
+  </sc-if>
+
+  <!-- HERO -->
+  <section style="padding: clamp(32px, 7vw, 56px) clamp(20px, 6vw, 40px); max-width: 1240px; margin: 0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items:center;">
+    <div>
+      <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Tag" hint-size="auto,28px">{{ t.heroTag }}</x-import>
+      <h1 style="font-family: var(--font-display); font-size: clamp(28px, 3.4vw, 46px); font-weight:600; letter-spacing:-0.02em; line-height:1.16; margin: 20px 0 0; text-wrap: pretty;">
+        {{ t.heroTitle }}
+      </h1>
+      <p style="font-size:18px; line-height:1.6; color: var(--color-ink-muted); max-width: 480px; margin: 20px 0 0;">
+        {{ t.heroDesc }}
+      </p>
+
+      <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top: 28px; padding: 16px 20px; background: var(--color-primary-light); border: 1px solid var(--color-border); border-radius: var(--radius-lg); width:100%; max-width:440px; box-sizing:border-box;">
+        <div style="display:flex; align-items:baseline; gap:6px; padding-right:16px; border-right: 1px solid var(--color-border); white-space:nowrap;">
+          <span style="font-size:13px; color: var(--color-ink-muted); font-weight:500; white-space:nowrap;">{{ t.heroFromLabel }}</span>
+          <span style="font-family: var(--font-mono); font-size:34px; font-weight:700; color: var(--color-primary-hover); line-height:1;">15€</span>
+          <span style="font-size:13px; color: var(--color-ink-muted); white-space:nowrap;">{{ t.heroPerHour }}</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px; flex:1; min-width:180px;">
+          <div style="display:flex; align-items:center; gap:6px; font-size:13px; color: var(--color-ink); white-space:nowrap;">
+            <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="check" size="14" color="var(--color-primary-hover)" hint-size="14px,14px"></x-import>
+            {{ t.heroPerk1 }}
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:13px; color: var(--color-ink); font-weight:600; white-space:nowrap;">
+            <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="gift" size="14" color="var(--color-primary-hover)" hint-size="14px,14px"></x-import>
+            {{ t.heroPerk2 }}
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:12px; margin-top:24px; align-items:center; flex-wrap:wrap;">
+        <a href="{{ mailtoReserva }}" style="text-decoration:none; {{ mobileLinkStyle }}">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" size="lg" hint-size="220px,48px" style="{{ mobileBtnStyle }}">{{ t.navReserva }}</x-import>
+        </a>
+        <a href="#tarifes" style="font-size:14px; font-weight:600; text-decoration:none;">{{ t.heroSeeRates }}</a>
+      </div>
+
+    </div>
+
+    <div style="position:relative;">
+      <img src="uploads/slot-hero-photo.webp" alt="{{ t.heroPhotoPlaceholder }}" style="width:100%; aspect-ratio: 3 / 4; box-shadow: var(--shadow-elevated); border-radius:16px; object-fit:contain; display:block;"/>
+    </div>
+  </section>
+
+  <!-- TESTIMONIS -->
+  <section style="background: var(--color-surface-1); padding: clamp(36px, 7vw, 64px) clamp(20px, 6vw, 40px); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); overflow:hidden;">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:36px;">
+        <h2 style="font-family: var(--font-display); font-size:28px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.testiTitle }}</h2>
+        <p style="font-size:15px; color: var(--color-ink-muted); margin:10px 0 0;">{{ t.testiSubtitle }}</p>
+      </div>
+      <div style="position:relative; overflow:hidden;">
+        <div style="{{ testimonialsTrackStyle }}">
+          <sc-for list="{{ testimonialsDisplay }}" as="tItem" hint-placeholder-count="2">
+            <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Card" padding="content" hint-size="420px,180px" style="width:min(420px, 85vw); flex-shrink:0;">
+              <div style="display:grid; grid-template-columns:{{ testimonialPhotoColWidth }} 1fr; gap:14px; align-items:start;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+                  <div role="img" aria-label="{{ tItem.name }}" style="{{ tItem.avatarStyle }}"></div>
+                  <sc-if value="{{ showLinkedinIcon }}" hint-placeholder-val="{{ true }}">
+                    <a href="{{ tItem.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn - {{ tItem.name }}" style="display:flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:#0A66C2;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"></path></svg>
+                    </a>
+                  </sc-if>
+                </div>
+                <div style="min-width:0;">
+                  <div style="display:flex; flex-direction:column; margin-bottom:8px;">
+                    <span style="font-size:14px; font-weight:600; color: var(--color-ink);">{{ tItem.name }}</span>
+                    <span style="color: var(--color-ink-subtle); font-size:12px; margin-top:2px;">{{ tItem.role }}</span>
+                  </div>
+                  <div style="font-size:14px; color: var(--color-ink); line-height:1.55; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">"{{ tItem.quote }}"</div>
+                  <sc-if value="{{ tItem.needsExpand }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ tItem.openModal }}" style="background:none; border:none; padding:0; margin-top:6px; color: var(--color-primary); font-size:13px; font-weight:600; cursor:pointer;">{{ t.seeMore }}</button>
+                  </sc-if>
+                </div>
+              </div>
+            </x-import>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ testimonialModalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeTestimonialModal }}" style="position:fixed; inset:0; background:rgba(17,24,39,0.5); z-index:50; display:flex; align-items:center; justify-content:center; padding:40px;">
+      <div onClick="{{ stopPropagation }}" style="max-width:560px; width:100%; background: var(--color-canvas); border-radius: var(--radius-lg); padding:32px; box-shadow: var(--shadow-overlay); position:relative;">
+        <button onClick="{{ closeTestimonialModal }}" aria-label="{{ t.close }}" style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; border:none; background: var(--color-surface-1); cursor:pointer; display:flex; align-items:center; justify-content:center;">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="x" size="16" color="var(--color-ink)" hint-size="16px,16px"></x-import>
+        </button>
+        <div style="display:flex; gap:14px; align-items:center; margin-bottom:16px;">
+          <div role="img" aria-label="{{ activeTestimonial.name }}" style="{{ activeTestimonial.avatarStyle }}"></div>
+          <div>
+            <div style="font-size:15px; font-weight:600; color: var(--color-ink);">{{ activeTestimonial.name }}</div>
+            <div style="font-size:13px; color: var(--color-ink-muted);">{{ activeTestimonial.role }}</div>
+          </div>
+        </div>
+        <div style="font-size:15px; color: var(--color-ink); line-height:1.7; white-space:pre-line;">"{{ activeTestimonial.quote }}"</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- PER A QUI ÉS -->
+  <section id="professionals" style="padding: clamp(40px, 8vw, 72px) clamp(20px, 6vw, 40px); max-width: 1240px; margin: 0 auto;">
+    <div style="text-align:center; margin-bottom:40px;">
+      <h2 style="font-family: var(--font-display); font-size:30px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.segmentsTitle }}</h2>
+      <p style="font-size:16px; color: var(--color-ink-muted); max-width:560px; margin:12px auto 0;">{{ t.segmentsSubtitle }}</p>
+    </div>
+    <div style="display:grid; grid-template-columns: {{ segmentsCols }}; gap:clamp(10px, 3vw, 16px);">
+      <sc-for list="{{ segments }}" as="s" hint-placeholder-count="4">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Card" hoverable="{{ true }}" padding="content" hint-size="100%,220px">
+          <div role="img" aria-label="{{ s.title }}" style="{{ s.imgStyle }}"></div>
+          <div style="font-family: var(--font-display); font-weight:600; font-size:16px; margin-top:14px;">{{ s.title }}</div>
+          <div style="font-size:13px; color: var(--color-ink-muted); margin-top:6px; line-height:1.5;">{{ s.desc }}</div>
+        </x-import>
+      </sc-for>
+    </div>
+    <div style="margin-top:32px; display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); align-items:center; gap:24px; background: var(--color-canvas); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding:clamp(18px, 4vw, 24px) clamp(20px, 5vw, 32px);">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div>
+          <div style="font-family: var(--font-display); font-weight:600; font-size:16px; color: var(--color-ink);">{{ t.noProfileTitle }}</div>
+          <div style="font-size:14px; color: var(--color-ink-muted); margin-top:2px;">{{ t.noProfileDesc }}</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <a href="{{ waLink }}" target="_blank" rel="noopener" style="text-decoration:none; {{ mobileLinkStyle }}">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" variant="secondary" size="lg" hint-size="200px,48px" style="{{ mobileBtnStyle }}">{{ t.sendWhatsapp }}</x-import>
+        </a>
+        <span style="font-size:13px; color: var(--color-ink-subtle); font-weight:600;">{{ t.or }}</span>
+        <a href="{{ mailtoDubtesSales }}" style="text-decoration:none; {{ mobileLinkStyle }}">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" size="lg" hint-size="220px,48px" style="{{ mobileBtnStyle }}">{{ t.askAboutRooms }}</x-import>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COM FUNCIONA / AGENDA -->
+  <section id="com-funciona" style="background: var(--color-surface-1); padding: clamp(40px, 8vw, 72px) clamp(20px, 6vw, 40px);">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:40px;">
+        <h2 style="font-family: var(--font-display); font-size:30px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.stepsTitle }}</h2>
+        <p style="font-size:16px; color: var(--color-ink-muted); max-width:560px; margin:12px auto 0;">{{ t.stepsSubtitle }}</p>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:40px; align-items:center;">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+            <div onClick="{{ st.toggle }}" style="background: var(--color-canvas); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding:20px 24px; cursor:pointer;">
+              <div style="display:flex; align-items:center; gap:14px;">
+                <div style="font-family: var(--font-mono); color: var(--color-primary); font-size:13px; font-weight:600; flex-shrink:0;">{{ st.n }}</div>
+                <div style="font-family: var(--font-display); font-weight:600; font-size:16px; flex:1;">{{ st.title }}</div>
+                <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="{{ st.chevronIcon }}" size="16" color="var(--color-ink-muted)" hint-size="16px,16px"></x-import>
+              </div>
+              <sc-if value="{{ st.expanded }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:14px; color: var(--color-ink-muted); margin-top:10px; line-height:1.6; padding-left:30px;">{{ st.desc }}</div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <img src="uploads/slot-calendar-showcase.webp" alt="{{ t.calendarPlaceholder }}" style="width:100%; aspect-ratio: 4/3; box-shadow: var(--shadow-elevated); border-radius:16px; object-fit:cover; display:block;"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section style="padding: clamp(40px, 8vw, 72px) clamp(20px, 6vw, 40px); max-width: 1240px; margin: 0 auto;">
+    <div style="text-align:center; margin-bottom:32px;">
+      <h2 style="font-family: var(--font-display); font-size:30px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.galleryTitle }}</h2>
+      <p style="font-size:16px; color: var(--color-ink-muted); margin:12px 0 0;">{{ t.gallerySubtitle }}</p>
+    </div>
+    <div style="position:relative;">
+      <button onClick="{{ scrollGalleryLeft }}" aria-label="{{ t.prev }}" style="position:absolute; left:{{ galleryArrowOffset }}; top:50%; transform:translateY(-50%); z-index:5; width:40px; height:40px; border-radius:50%; border:1px solid var(--color-border); background: var(--color-canvas); box-shadow: var(--shadow-card); cursor:pointer; display:flex; align-items:center; justify-content:center;">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="chevron-left" size="18" color="var(--color-ink)" hint-size="18px,18px"></x-import>
+      </button>
+      <div ref="{{ galleryRef }}" style="display:flex; gap:16px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; padding-bottom:4px;">
+        <sc-for list="{{ galleryPhotos }}" as="g" hint-placeholder-count="12">
+          <div onClick="{{ g.open }}" style="flex: 0 0 min(300px, 78vw); aspect-ratio: 4 / 3; cursor:pointer;">
+            <div role="img" aria-label="{{ g.placeholder }}" style="{{ g.imgStyle }}"></div>
+          </div>
+        </sc-for>
+      </div>
+      <button onClick="{{ scrollGalleryRight }}" aria-label="{{ t.next }}" style="position:absolute; right:{{ galleryArrowOffset }}; top:50%; transform:translateY(-50%); z-index:5; width:40px; height:40px; border-radius:50%; border:1px solid var(--color-border); background: var(--color-canvas); box-shadow: var(--shadow-card); cursor:pointer; display:flex; align-items:center; justify-content:center;">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="chevron-right" size="18" color="var(--color-ink)" hint-size="18px,18px"></x-import>
+      </button>
+    </div>
+  </section>
+
+  <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLightbox }}" style="position:fixed; inset:0; background:rgba(17,24,39,0.85); z-index:50; display:flex; align-items:center; justify-content:center; padding:40px;">
+      <div onClick="{{ stopPropagation }}" style="max-width:1400px; width:100%; max-height:90vh; aspect-ratio:4/3; position:relative;">
+        <div role="img" aria-label="{{ lightboxPlaceholder }}" style="{{ lightboxImgStyle }}"></div>
+      </div>
+      <button onClick="{{ closeLightbox }}" aria-label="{{ t.close }}" style="position:absolute; top:24px; right:24px; width:40px; height:40px; border-radius:50%; border:none; background: var(--color-canvas); cursor:pointer; display:flex; align-items:center; justify-content:center;">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="x" size="20" color="var(--color-ink)" hint-size="20px,20px"></x-import>
+      </button>
+    </div>
+  </sc-if>
+
+  <!-- SERVEIS INCLOSOS -->
+  <section style="background: var(--color-surface-1); padding: clamp(40px, 8vw, 72px) clamp(20px, 6vw, 40px);">
+    <div style="max-width:1240px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:40px;">
+        <h2 style="font-family: var(--font-display); font-size:30px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.servicesTitle }}</h2>
+      </div>
+      <div style="display:grid; grid-template-columns: {{ servicesCols }}; gap:16px;">
+        <sc-for list="{{ services }}" as="sv" hint-placeholder-count="6">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Card" hoverable="{{ true }}" padding="content" hint-size="100%,150px">
+            <div role="img" aria-label="{{ sv.title }}" style="{{ sv.imgStyle }}"></div>
+            <div style="font-family: var(--font-display); font-weight:600; font-size:15px; margin-top:14px;">{{ sv.title }}</div>
+            <div style="font-size:13px; color: var(--color-ink-muted); margin-top:6px; line-height:1.5;">{{ sv.desc }}</div>
+          </x-import>
+        </sc-for>
+      </div>
+      <div style="display:flex; justify-content:center; margin-top:32px;">
+        <a href="{{ mailtoDubtesSales }}" style="text-decoration:none; {{ mobileLinkStyle }}">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" size="lg" hint-size="220px,48px" style="{{ mobileBtnStyle }}">{{ t.askAboutServices }}</x-import>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFES -->
+  <section id="tarifes" style="padding: clamp(40px, 8vw, 72px) clamp(20px, 6vw, 40px); max-width: 1240px; margin: 0 auto;">
+    <div style="text-align:center; margin-bottom:32px;">
+      <h2 style="font-family: var(--font-display); font-size:30px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.ratesTitle }}</h2>
+      <p style="font-size:16px; color: var(--color-ink-muted); max-width:560px; margin:12px auto 0;">{{ t.ratesSubtitle }}</p>
+    </div>
+    <div style="display:flex; justify-content:center; margin-bottom:32px;">
+      <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Tabs" tabs="{{ roomTabs }}" active="{{ roomType }}" onChange="{{ setRoomType }}" hint-size="320px,44px"></x-import>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:20px; align-items:stretch;">
+      <sc-for list="{{ pricing }}" as="p" hint-placeholder-count="3">
+        <div style="position:relative;">
+          <sc-if value="{{ p.popular }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:-12px; left:50%; transform:translateX(-50%); background: var(--color-primary); color: var(--color-on-primary); font-size:11px; font-weight:600; padding:4px 12px; border-radius: var(--radius-pill); z-index:2;">{{ t.mostPopular }}</div>
+          </sc-if>
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Card" padding="content" hint-size="100%,320px" dc-props="{{ { style: { height: '100%', border: p.popular ? '2px solid var(--color-primary)' : undefined } } }}">
+            <div style="font-size:12px; color: var(--color-ink-subtle); font-weight:600; text-transform:uppercase; letter-spacing:0.04em;">{{ p.stage }}</div>
+            <div style="font-family: var(--font-display); font-size:20px; font-weight:600; margin-top:8px;">{{ p.title }}</div>
+            <div style="display:flex; flex-direction:column; gap:4px; margin-top:14px;">
+              <sc-for list="{{ p.prices }}" as="pr" hint-placeholder-count="1">
+                <div style="display:flex; align-items:baseline; gap:6px; flex-wrap:wrap;">
+                  <span style="font-family: var(--font-mono); font-size:24px; font-weight:600; white-space:nowrap;">{{ pr.price }}</span>
+                  <span style="font-size:13px; color: var(--color-ink-muted); white-space:nowrap;">{{ pr.unit }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:13px; color: var(--color-ink-muted); margin-top:12px; line-height:1.6; min-height:60px;">{{ p.desc }}</div>
+            <div style="margin-top:20px;">
+              <a href="{{ p.mailHref }}" style="text-decoration:none; display:grid; width:100%;">
+                <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" variant="{{ p.variant }}" hint-size="100%,40px">{{ p.cta }}</x-import>
+              </a>
+            </div>
+          </x-import>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:20px;">
+      <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Card" padding="content" hint-size="100%,90px">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
+          <div style="min-width:220px;">
+            <div style="font-family: var(--font-display); font-weight:600; font-size:16px;">{{ t.fixedSlotTitle }}</div>
+            <div style="font-size:13px; color: var(--color-ink-muted); margin-top:4px;">{{ t.fixedSlotDesc }}</div>
+          </div>
+          <a href="{{ mailtoFranjaFixa }}" style="text-decoration:none; {{ mobileLinkStyle }}">
+            <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" variant="secondary" hint-size="180px,40px" style="{{ mobileBtnStyle }}">{{ t.requestInfo }}</x-import>
+          </a>
+        </div>
+      </x-import>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background: var(--color-surface-1); padding: clamp(40px, 8vw, 72px) clamp(20px, 6vw, 40px);">
+    <div style="max-width:760px; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:32px;">
+        <h2 style="font-family: var(--font-display); font-size:30px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.faqTitle }}</h2>
+        <p style="font-size:16px; color: var(--color-ink-muted); margin:12px 0 0;">{{ t.faqSubtitle }}</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+          <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-canvas); overflow:hidden;">
+            <div onClick="{{ f.toggle }}" style="padding:16px 20px; display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
+              <span style="font-family: var(--font-display); font-weight:600; font-size:15px;">{{ f.q }}</span>
+              <span style="color: var(--color-primary); font-size:18px; font-weight:600;">{{ f.symbol }}</span>
+            </div>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <div style="padding: 0 20px 18px; font-size:14px; color: var(--color-ink-muted); line-height:1.6;">{{ f.a }}</div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓ -->
+  <section id="ubicacio" style="padding: clamp(40px, 8vw, 72px) clamp(20px, 6vw, 40px); max-width: 1240px; margin: 0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:48px; align-items:center;">
+    <iframe title="Espai Llibertat - {{ t.mapTitle }}" src="https://www.google.com/maps?q=Carrer+de+la+Llibertat+63,+08800+Vilanova+i+la+Geltr%C3%BA,+Barcelona&output=embed" style="width:100%; height:320px; border:0; border-radius: var(--radius-lg); box-shadow: var(--shadow-card);" loading="lazy"></iframe>
+    <div>
+      <h2 style="font-family: var(--font-display); font-size:26px; font-weight:600; letter-spacing:-0.01em; margin:0;">{{ t.locationTitle }}</h2>
+      <p style="font-size:15px; color: var(--color-ink-muted); line-height:1.65; margin-top:14px;">{{ t.locationDesc }}</p>
+      <div style="margin-top:20px; font-size:14px; color: var(--color-ink);">
+        <div style="font-weight:600;">{{ t.addressLabel }}</div>
+        <div style="color: var(--color-ink-muted); margin-top:2px;">Carrer de la Llibertat 63, planta baixa · 08800 Vilanova i la Geltrú, Barcelona</div>
+        <div style="display:inline-flex; align-items:center; gap:6px; margin-top:10px; background: var(--color-primary-light); color: var(--color-primary-hover); font-weight:600; font-size:13px; padding:6px 12px; border-radius: var(--radius-pill);">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="train" size="14" color="var(--color-primary-hover)" hint-size="14px,14px"></x-import>
+          {{ t.nearTrain }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section style="background: var(--color-primary); padding: clamp(32px, 7vw, 56px) clamp(20px, 6vw, 40px); text-align:center;">
+    <h2 style="font-family: var(--font-display); font-size:28px; font-weight:600; color: var(--color-on-primary); margin:0;">{{ t.finalCtaTitle }}</h2>
+    <p style="font-size:16px; color: var(--color-on-primary); opacity:0.9; max-width:520px; margin:14px auto 0;">{{ t.finalCtaDesc }}</p>
+    <div style="display:flex; gap:12px; justify-content:center; margin-top:24px; flex-wrap:wrap;">
+      <a href="{{ waLink }}" target="_blank" rel="noopener" style="text-decoration:none; {{ mobileLinkStyle }}">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" size="lg" hint-size="220px,48px" style="background: var(--color-on-primary); color: var(--color-primary); display:flex; align-items:center; justify-content:center; gap:8px; {{ mobileBtnStyle }}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.9 9.9 0 0 0 4.62 1.14h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm0 17.9a8 8 0 0 1-4.07-1.11l-.29-.17-3.02.76.8-2.94-.19-.3a7.9 7.9 0 0 1-1.22-4.23c0-4.38 3.57-7.95 7.99-7.95 4.38 0 7.95 3.57 7.95 7.95 0 4.38-3.57 7.99-7.95 7.99Zm4.4-5.97c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.35-1.67-.14-.24-.02-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28Z"></path></svg>
+          {{ t.contactWhatsapp }}
+        </x-import>
+      </a>
+      <a href="{{ mailtoVisita }}" style="text-decoration:none; {{ mobileLinkStyle }}">
+        <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Button" size="lg" variant="secondary" hint-size="180px,48px" style="border-color: var(--color-on-primary); color: var(--color-on-primary); display:flex; align-items:center; justify-content:center; gap:8px; {{ mobileBtnStyle }}">
+          <x-import component-from-global-scope="EspaiLlibertatDesignSystem_7b8831.Icon" name="mail" size="18" color="var(--color-on-primary)" hint-size="18px,18px"></x-import>
+          {{ t.sendEmail }}
+        </x-import>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding: clamp(24px, 6vw, 40px); border-top: 1px solid var(--color-border);">
+    <div style="max-width:1240px; margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:32px; font-size:13px; color: var(--color-ink-muted);">
+      <div>
+        <img src="uploads/Marca.svg" alt="Espai Llibertat" style="height:40px; width:auto; margin-bottom:10px;"/>
+        <div style="font-family: var(--font-display); font-weight:600; font-size:16px; color: var(--color-ink);">Espai Llibertat</div>
+        <div style="margin-top:8px; line-height:1.6; max-width:280px;">{{ t.footerTagline }}</div>
+      </div>
+      <div>
+        <div style="font-weight:600; color: var(--color-ink); margin-bottom:8px;">{{ t.footerExplore }}</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <a href="#com-funciona" style="text-decoration:none; color:inherit;">{{ t.navComFunciona }}</a>
+          <a href="#professionals" style="text-decoration:none; color:inherit;">{{ t.navProfessionals }}</a>
+          <a href="#tarifes" style="text-decoration:none; color:inherit;">{{ t.navTarifes }}</a>
+          <a href="#ubicacio" style="text-decoration:none; color:inherit;">{{ t.navUbicacio }}</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:600; color: var(--color-ink); margin-bottom:8px;">{{ t.footerLegal }}</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <a href="Avis Legal.dc.html" style="text-decoration:none; color:inherit;">{{ t.legalNotice }}</a>
+          <a href="Politica Privadesa.dc.html" style="text-decoration:none; color:inherit;">{{ t.privacyPolicy }}</a>
+          <a href="Politica Cookies.dc.html" style="text-decoration:none; color:inherit;">{{ t.cookiesPolicy }}</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight:600; color: var(--color-ink); margin-bottom:8px;">{{ t.footerContact }}</div>
+        <div style="line-height:1.6; word-break:break-word;">Carrer de la Llibertat 63<br/>Vilanova i la Geltrú, 08800<br/>libertad.cg@gmail.com</div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="{{ waLink }}" target="_blank" rel="noopener" aria-label="{{ t.contactWhatsapp }}" style="position:fixed; bottom:clamp(14px,4vw,24px); right:clamp(14px,4vw,24px); width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow-overlay); z-index:40;">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.9 9.9 0 0 0 4.62 1.14h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm0 17.9a8 8 0 0 1-4.07-1.11l-.29-.17-3.02.76.8-2.94-.19-.3a7.9 7.9 0 0 1-1.22-4.23c0-4.38 3.57-7.95 7.99-7.95 4.38 0 7.95 3.57 7.95 7.95 0 4.38-3.57 7.99-7.95 7.99Zm4.4-5.97c-.24-.12-1.43-.7-1.65-.79-.22-.08-.38-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.35-1.67-.14-.24-.02-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.42-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.04.14-1.15-.06-.1-.22-.16-.46-.28Z"></path></svg>
+  </a>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;testimonialPhotoWidth&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:64,&quot;min&quot;:64,&quot;max&quot;:140,&quot;step&quot;:4,&quot;unit&quot;:&quot;px&quot;,&quot;section&quot;:&quot;Testimonis&quot;,&quot;tsType&quot;:&quot;number&quot;},&quot;testimonialPhotoShape&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;circle&quot;,&quot;options&quot;:[&quot;circle&quot;,&quot;square&quot;],&quot;section&quot;:&quot;Testimonis&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showLinkedinIcon&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;section&quot;:&quot;Testimonis&quot;,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { openFaq: 0, roomType: 'individual', lightboxIndex: null, activeTestimonialIndex: null, expandedStep: 0, lang: 'ca', isMobile: false, mobileMenuOpen: false };
+  galleryRef = React.createRef();
+
+  componentDidMount() {
+    document.title = this.state.lang === 'ca' ? this.T.ca.metaTitle : this.T.es.metaTitle;
+    this.mq = window.matchMedia('(max-width: 1024px)');
+    this.mqMobile = window.matchMedia('(max-width: 640px)');
+    this.updateMq = () => this.setState(s => ({ isMobile: this.mq.matches, isMobileOnly: this.mqMobile.matches, mobileMenuOpen: this.mq.matches ? s.mobileMenuOpen : false }));
+    this.updateMq();
+    this.mq.addEventListener('change', this.updateMq);
+    this.mqMobile.addEventListener('change', this.updateMq);
+  }
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener('change', this.updateMq);
+    if (this.mqMobile) this.mqMobile.removeEventListener('change', this.updateMq);
+  }
+  componentDidUpdate() { document.title = this.state.lang === 'ca' ? this.T.ca.metaTitle : this.T.es.metaTitle; }
+  toggleMobileMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+  closeMobileMenu = () => this.setState({ mobileMenuOpen: false });
+
+  scrollGalleryLeft = () => { if (this.galleryRef.current) this.galleryRef.current.scrollBy({ left: -320, behavior: 'smooth' }); };
+  scrollGalleryRight = () => { if (this.galleryRef.current) this.galleryRef.current.scrollBy({ left: 320, behavior: 'smooth' }); };
+  closeLightbox = () => this.setState({ lightboxIndex: null });
+  stopPropagation = (e) => e.stopPropagation();
+
+  mailTo = 'libertad.cg@hotmail.com';
+  waNumber = '34660913103';
+  buildMailto(subject) { return `mailto:${this.mailTo}?subject=${encodeURIComponent(subject)}`; }
+  buildWa(message) { return `https://wa.me/${this.waNumber}?text=${encodeURIComponent(message)}`; }
+
+  resolveAsset(rawPath) {
+    const id = rawPath.replace(/^uploads\//, '').replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9]+/g, '_');
+    if (typeof window !== 'undefined' && window.__resources && window.__resources[id]) return window.__resources[id];
+    return encodeURI(rawPath);
+  }
+  slotImage(id) { return this.resolveAsset(`uploads/slot-${id}.webp`); }
+  avatarSrcFor(tm) { return tm.avatarSrcOverride ? this.resolveAsset(tm.avatarSrcOverride) : this.slotImage(tm.avatarId); }
+
+  T = {
+    ca: {
+      metaTitle: 'Espai Llibertat — Coworking de Salut a Vilanova i la Geltrú',
+      metaDesc: 'Lloga sales de salut per hores, bons o subscripció a Vilanova i la Geltrú. Sense permanència, tot inclòs. Primera hora de visita gratuïta.',
+      ogLocale: 'ca_ES',
+      navComFunciona: 'Com funciona', navProfessionals: 'Per a qui és', navTarifes: 'Tarifes', navFaq: 'Preguntes', navUbicacio: 'Ubicació', navReserva: 'Reserva la teva hora',
+      heroTag: 'Per a professionals de la salut · Vilanova i la Geltrú',
+      heroTitle: 'Munta la teva consulta sense arriscar ni un euro de lloguer fix',
+      heroDesc: 'Lloga sales de salut premium per hores, bons o subscripció. Sense permanència, sense despeses de manteniment, amb tot l\'equipament llest perquè només et calgui obrir la porta.',
+      heroFromLabel: 'Des de', heroPerHour: '/hora', heroPerk1: 'Sense mínims ni permanència', heroPerk2: 'Primera hora de visita gratuïta', heroSeeRates: 'Veure tarifes ↓',
+      heroPhotoPlaceholder: 'Foto professional de la sala principal',
+      testiTitle: 'Professionals que han consolidat la seva carrera aquí',
+      testiSubtitle: 'Gent que va confiar en Espai Llibertat per començar, i avui té la seva consulta consolidada.',
+      seeMore: 'Veure més', photoPlaceholder: 'Foto', close: 'Tancar',
+      segmentsTitle: 'Pensat per al teu tipus de consulta',
+      segmentsSubtitle: 'Cada professional necessita coses diferents. Tria el teu perfil i et diem què inclou l\'espai per a tu.',
+      noProfileTitle: 'No trobes el teu perfil?', noProfileDesc: 'Tens dubtes sobre com encaixa la teva especialitat a l\'espai? Escriu-nos i t\'ajudem.',
+      sendWhatsapp: 'Envia\'ns un WhatsApp', or: 'O', askAboutRooms: 'Pregunta per les sales',
+      stepsTitle: 'Reserva en tres passos', stepsSubtitle: 'Disponibilitat en temps real, sincronitzada amb el teu calendari personal.',
+      calendarPlaceholder: 'Il·lustració d\'un calendari setmanal ple de reserves',
+      galleryTitle: 'L\'espai', gallerySubtitle: 'Dissenyat per al benestar i la professionalitat.', prev: 'Anterior', next: 'Següent',
+      servicesTitle: 'Tot inclòs, sense sorpreses', checkIt: 'Consulta-ho', askAboutServices: 'Consulta-ho tot',
+      ratesTitle: 'Creix al teu ritme', ratesSubtitle: 'Comença sense compromís i puja d\'esglaó quan la teva cartera de pacients creixi.', mostPopular: 'MÉS POPULAR',
+      fixedSlotTitle: 'Necessites una franja fixa setmanal o ús intensiu?', fixedSlotDesc: 'Oferim condicions a mida per a professionals amb horari estable. Inclou el teu perfil al directori de l\'espai.', requestInfo: 'Sol·licitar informació',
+      faqTitle: 'Preguntes freqüents', faqSubtitle: 'Perquè "risc zero" no sigui només una promesa.',
+      locationTitle: 'A minuts de casa teva',
+      locationDesc: 'Estalvia temps i estrès. Deixa de dependre dels Túnels del Garraf o dels embussos de la C-32. Si vius a Vilanova, Sitges, Cubelles o Sant Pere de Ribes, Espai Llibertat és el teu nou local de salut.',
+      addressLabel: 'Adreça', nearTrain: 'Molt a prop de l\'estació de Renfe', mapTitle: 'mapa',
+      finalCtaTitle: 'Vols visitar l\'espai abans de decidir?', finalCtaDesc: 'La primera hora és totalment gratuïta i sense compromís. T\'ensenyem les sales i resolem els teus dubtes.',
+      contactWhatsapp: 'Contactar per WhatsApp', sendEmail: 'Enviar un email',
+      footerTagline: 'Coworking de salut a Vilanova i la Geltrú. L\'espai que et deixa créixer com a professional de la salut.',
+      footerExplore: 'Explora', footerLegal: 'Legal', footerContact: 'Contacte',
+      legalNotice: 'Avís legal', privacyPolicy: 'Política de privadesa', cookiesPolicy: 'Política de cookies',
+    },
+    es: {
+      metaTitle: 'Espai Llibertat — Coworking de Salud en Vilanova i la Geltrú',
+      metaDesc: 'Alquila salas de salud por horas, bonos o suscripción en Vilanova i la Geltrú. Sin permanencia, todo incluido. Primera hora de visita gratuita.',
+      ogLocale: 'es_ES',
+      navComFunciona: 'Cómo funciona', navProfessionals: 'Para quién es', navTarifes: 'Tarifas', navFaq: 'Preguntas', navUbicacio: 'Ubicación', navReserva: 'Reserva tu hora',
+      heroTag: 'Para profesionales de la salud · Vilanova i la Geltrú',
+      heroTitle: 'Monta tu consulta sin arriesgar ni un euro de alquiler fijo',
+      heroDesc: 'Alquila salas de salud premium por horas, bonos o suscripción. Sin permanencia, sin gastos de mantenimiento, con todo el equipamiento listo para que solo tengas que abrir la puerta.',
+      heroFromLabel: 'Desde', heroPerHour: '/hora', heroPerk1: 'Sin mínimos ni permanencia', heroPerk2: 'Primera hora de visita gratuita', heroSeeRates: 'Ver tarifas ↓',
+      heroPhotoPlaceholder: 'Foto profesional de la sala principal',
+      testiTitle: 'Profesionales que han consolidado su carrera aquí',
+      testiSubtitle: 'Gente que confió en Espai Llibertat para empezar, y hoy tiene su consulta consolidada.',
+      seeMore: 'Ver más', photoPlaceholder: 'Foto', close: 'Cerrar',
+      segmentsTitle: 'Pensado para tu tipo de consulta',
+      segmentsSubtitle: 'Cada profesional necesita cosas diferentes. Elige tu perfil y te decimos qué incluye el espacio para ti.',
+      noProfileTitle: '¿No encuentras tu perfil?', noProfileDesc: '¿Tienes dudas sobre cómo encaja tu especialidad en el espacio? Escríbenos y te ayudamos.',
+      sendWhatsapp: 'Envíanos un WhatsApp', or: 'O', askAboutRooms: 'Pregunta por las salas',
+      stepsTitle: 'Reserva en tres pasos', stepsSubtitle: 'Disponibilidad en tiempo real, sincronizada con tu calendario personal.',
+      calendarPlaceholder: 'Ilustración de un calendario semanal lleno de reservas',
+      galleryTitle: 'El espacio', gallerySubtitle: 'Diseñado para el bienestar y la profesionalidad.', prev: 'Anterior', next: 'Siguiente',
+      servicesTitle: 'Todo incluido, sin sorpresas', checkIt: 'Consúltalo', askAboutServices: 'Consúltalo todo',
+      ratesTitle: 'Crece a tu ritmo', ratesSubtitle: 'Empieza sin compromiso y sube de nivel cuando tu cartera de pacientes crezca.', mostPopular: 'MÁS POPULAR',
+      fixedSlotTitle: '¿Necesitas una franja fija semanal o uso intensivo?', fixedSlotDesc: 'Ofrecemos condiciones a medida para profesionales con horario estable. Incluye tu perfil en el directorio del espacio.', requestInfo: 'Solicitar información',
+      faqTitle: 'Preguntas frecuentes', faqSubtitle: 'Para que "riesgo cero" no sea solo una promesa.',
+      locationTitle: 'A minutos de tu casa',
+      locationDesc: 'Ahorra tiempo y estrés. Deja de depender de los Túneles del Garraf o los atascos de la C-32. Si vives en Vilanova, Sitges, Cubelles o Sant Pere de Ribes, Espai Llibertat es tu nuevo local de salud.',
+      addressLabel: 'Dirección', nearTrain: 'Muy cerca de la estación de Renfe', mapTitle: 'mapa',
+      finalCtaTitle: '¿Quieres visitar el espacio antes de decidir?', finalCtaDesc: 'La primera hora es totalmente gratuita y sin compromiso. Te enseñamos las salas y resolvemos tus dudas.',
+      contactWhatsapp: 'Contactar por WhatsApp', sendEmail: 'Enviar un email',
+      footerTagline: 'Coworking de salud en Vilanova i la Geltrú. El espacio que te deja crecer como profesional de la salud.',
+      footerExplore: 'Explora', footerLegal: 'Legal', footerContact: 'Contacto',
+      legalNotice: 'Aviso legal', privacyPolicy: 'Política de privacidad', cookiesPolicy: 'Política de cookies',
+    },
+  };
+
+  roomTabsData = {
+    ca: [{ value: 'individual', label: 'Sala Individual' }, { value: 'grupal', label: 'Sala Grupal' }],
+    es: [{ value: 'individual', label: 'Sala Individual' }, { value: 'grupal', label: 'Sala Grupal' }],
+  };
+
+  pricingByRoom = {
+    ca: {
+      individual: [
+        { stage: 'Prova', title: 'Pagament per ús', prices: [{ price: '15€', unit: '/hora' }], desc: 'Ideal per a visites esporàdiques o primeres sessions, sense compromís.', cta: 'Comença ara', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria començar amb el pagament per ús (sala individual)' },
+        { stage: 'Recurrent', title: 'Bos d\'Hores', prices: [{ price: '120€', unit: 'Bo 10h · 12€/h' }, { price: '250€', unit: 'Bo 25h · 10€/h' }], desc: 'Caducitat de 3-4 mesos. Prioritat de reserva i ús flexible.', cta: 'Sol·licitar bo', variant: 'primary', popular: true, mailSubject: 'Sol·licitud d\'informació sobre el Bo d\'Hores' },
+        { stage: 'Estable', title: 'Subscripció Mensual', prices: [{ price: '280€', unit: '/mes' }], desc: 'Franja fixa assegurada de matí o tarda i presència al directori de professionals.', cta: 'Parlem-ne', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria parlar sobre la subscripció mensual' },
+      ],
+      grupal: [
+        { stage: 'Prova', title: 'Pagament per ús', prices: [{ price: '25€', unit: '/hora' }], desc: 'Perfecte per a classes o tallers de 4-6 persones.', cta: 'Comença ara', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria començar amb el pagament per ús (sala grupal)' },
+        { stage: 'Recurrent', title: 'Pack Recurrent Mensual', prices: [{ price: '120€', unit: '/mes' }], desc: '2 hores setmanals fixes (8h/mes). Assegura el teu espai per a classes setmanals.', cta: 'Sol·licitar pack', variant: 'primary', popular: true, mailSubject: 'Sol·licitud d\'informació sobre el Pack Recurrent Mensual' },
+        { stage: 'Estable', title: 'Franja Completa', prices: [{ price: 'Consultar', unit: '' }], desc: 'Per a bloquejos d\'alt volum o ús intensiu de la sala grupal.', cta: 'Sol·licitar informació', variant: 'secondary', popular: false, mailSubject: 'Sol·licitud d\'informació sobre la franja completa' },
+      ],
+    },
+    es: {
+      individual: [
+        { stage: 'Prueba', title: 'Pago por uso', prices: [{ price: '15€', unit: '/hora' }], desc: 'Ideal para visitas esporádicas o primeras sesiones, sin compromiso.', cta: 'Empieza ahora', variant: 'secondary', popular: false, mailSubject: 'Me gustaría empezar con el pago por uso (sala individual)' },
+        { stage: 'Recurrente', title: 'Bonos de Horas', prices: [{ price: '120€', unit: 'Bono 10h · 12€/h' }, { price: '250€', unit: 'Bono 25h · 10€/h' }], desc: 'Caducidad de 3-4 meses. Prioridad de reserva y uso flexible.', cta: 'Solicitar bono', variant: 'primary', popular: true, mailSubject: 'Solicitud de información sobre el Bono de Horas' },
+        { stage: 'Estable', title: 'Suscripción Mensual', prices: [{ price: '280€', unit: '/mes' }], desc: 'Franja fija asegurada de mañana o tarde y presencia en el directorio de profesionales.', cta: 'Hablemos', variant: 'secondary', popular: false, mailSubject: 'Me gustaría hablar sobre la suscripción mensual' },
+      ],
+      grupal: [
+        { stage: 'Prueba', title: 'Pago por uso', prices: [{ price: '25€', unit: '/hora' }], desc: 'Perfecto para clases o talleres de 4-6 personas.', cta: 'Empieza ahora', variant: 'secondary', popular: false, mailSubject: 'Me gustaría empezar con el pago por uso (sala grupal)' },
+        { stage: 'Recurrente', title: 'Pack Recurrente Mensual', prices: [{ price: '120€', unit: '/mes' }], desc: '2 horas semanales fijas (8h/mes). Asegura tu espacio para clases semanales.', cta: 'Solicitar pack', variant: 'primary', popular: true, mailSubject: 'Solicitud de información sobre el Pack Recurrente Mensual' },
+        { stage: 'Estable', title: 'Franja Completa', prices: [{ price: 'Consultar', unit: '' }], desc: 'Para bloqueos de alto volumen o uso intensivo de la sala grupal.', cta: 'Solicitar información', variant: 'secondary', popular: false, mailSubject: 'Solicitud de información sobre la franja completa' },
+      ],
+    },
+  };
+
+  segmentsData = {
+    ca: [
+      { image: 'uploads/segment-entrenadors.png', title: 'Fisioterapeutes', desc: 'Sala amb llitera, espai per a mobilitat i material de teràpia manual disponible.' },
+      { image: 'uploads/segment-fisio.png', title: 'Nutricionistes', desc: 'Taula de consulta i bàscula disponible, ideal per a sessions curtes.' },
+      { image: 'uploads/segment-nutricio.png', title: 'Bellesa i cura personal', desc: 'Espai net i íntim, ideal per a tractaments estètics i de benestar.' },
+      { image: 'uploads/segment-beauty.png', title: 'Entrenadors i terapeutes', desc: 'Sala grupal amb estoretes, bandes elàstiques i espai per a fins a 6 persones.' },
+    ],
+    es: [
+      { image: 'uploads/segment-entrenadors.png', title: 'Fisioterapeutas', desc: 'Sala con camilla, espacio para movilidad y material de terapia manual disponible.' },
+      { image: 'uploads/segment-fisio.png', title: 'Nutricionistas', desc: 'Mesa de consulta y báscula disponible, ideal para sesiones cortas.' },
+      { image: 'uploads/segment-nutricio.png', title: 'Belleza y cuidado personal', desc: 'Espacio limpio e íntimo, ideal para tratamientos estéticos y de bienestar.' },
+      { image: 'uploads/segment-beauty.png', title: 'Entrenadores y terapeutas', desc: 'Sala grupal con esterillas, bandas elásticas y espacio para hasta 6 personas.' },
+    ],
+  };
+
+  stepsData = {
+    ca: [
+      { n: '01', title: 'Consulta la disponibilitat', desc: 'Calendari comú en temps real, des de qualsevol dispositiu.' },
+      { n: '02', title: 'Reserva en 3 clics', desc: 'Paga per hora, amb bo o amb subscripció. Confirmació immediata.' },
+      { n: '03', title: 'Arriba i treballa', desc: 'Sala neta, equipada i climatitzada. Cancel·la sense cost fins 15 min abans.' },
+    ],
+    es: [
+      { n: '01', title: 'Consulta la disponibilidad', desc: 'Calendario común en tiempo real, desde cualquier dispositivo.' },
+      { n: '02', title: 'Reserva en 3 clics', desc: 'Paga por hora, con bono o con suscripción. Confirmación inmediata.' },
+      { n: '03', title: 'Llega y trabaja', desc: 'Sala limpia, equipada y climatizada. Cancela sin coste hasta 15 min antes.' },
+    ],
+  };
+
+  servicesData = {
+    ca: [
+      { icon: 'shield-check', image: 'uploads/service-residus.png', title: 'Gestió de residus biosanitaris', desc: 'Tranquil·litat legal absoluta amb recollida professional inclosa.', mailSubject: 'Vull més informació sobre la gestió de residus biosanitaris' },
+      { icon: 'sparkles', image: 'uploads/service-consumibles.png', title: 'Consumibles llestos', desc: 'Paper de llitera, tovalloles netes i cremes de massatge disponibles.', mailSubject: 'Vull més informació sobre els consumibles inclosos' },
+      { icon: 'users', image: 'uploads/service-sala-grupal.png', title: 'Sala grupal equipada', desc: 'Espai per a 4–6 alumnes amb estoretes i material inclòs.', mailSubject: 'Vull més informació sobre la sala grupal equipada' },
+      { icon: 'thermometer', image: 'uploads/service-climatitzacio.png', title: 'Climatització independent', desc: 'Control individual de fred i calor a cada sala.', mailSubject: 'Vull més informació sobre la climatització de les sales' },
+      { icon: 'network', image: 'uploads/service-entorn.png', title: 'Entorn col·laboratiu', desc: 'Forma part d\'una comunitat de salut activa que genera derivacions entre professionals.', mailSubject: 'Vull més informació sobre l\'entorn col·laboratiu' },
+      { icon: 'calendar-check', image: 'uploads/service-prereserva.png', title: '15 min de pre-reserva', desc: 'Bloqueja un forat gratis mentre confirmes la cita amb el teu pacient.', mailSubject: 'Vull més informació sobre la pre-reserva de 15 minuts' },
+    ],
+    es: [
+      { icon: 'shield-check', image: 'uploads/service-residus.png', title: 'Gestión de residuos biosanitarios', desc: 'Tranquilidad legal absoluta con recogida profesional incluida.', mailSubject: 'Quiero más información sobre la gestión de residuos biosanitarios' },
+      { icon: 'sparkles', image: 'uploads/service-consumibles.png', title: 'Consumibles listos', desc: 'Papel de camilla, toallas limpias y cremas de masaje disponibles.', mailSubject: 'Quiero más información sobre los consumibles incluidos' },
+      { icon: 'users', image: 'uploads/service-sala-grupal.png', title: 'Sala grupal equipada', desc: 'Espacio para 4–6 alumnos con esterillas y material incluido.', mailSubject: 'Quiero más información sobre la sala grupal equipada' },
+      { icon: 'thermometer', image: 'uploads/service-climatitzacio.png', title: 'Climatización independiente', desc: 'Control individual de frío y calor en cada sala.', mailSubject: 'Quiero más información sobre la climatización de las salas' },
+      { icon: 'network', image: 'uploads/service-entorn.png', title: 'Entorno colaborativo', desc: 'Forma parte de una comunidad de salud activa que genera derivaciones entre profesionales.', mailSubject: 'Quiero más información sobre el entorno colaborativo' },
+      { icon: 'calendar-check', image: 'uploads/service-prereserva.png', title: '15 min de pre-reserva', desc: 'Bloquea un hueco gratis mientras confirmas la cita con tu paciente.', mailSubject: 'Quiero más información sobre la pre-reserva de 15 minutos' },
+    ],
+  };
+
+  galleryPhotosData = {
+    ca: [
+      { id: 'gallery-1', placeholder: 'Sala individual' }, { id: 'gallery-2', placeholder: 'Sala grupal' }, { id: 'gallery-3', placeholder: 'Recepció' },
+      { id: 'gallery-4', placeholder: 'Llitera de teràpia' }, { id: 'gallery-5', placeholder: 'Zona d\'espera' }, { id: 'gallery-6', placeholder: 'Material i consumibles' },
+      { id: 'gallery-7', placeholder: 'Sala amb llum natural' }, { id: 'gallery-8', placeholder: 'Entrada de l\'espai' }, { id: 'gallery-9', placeholder: 'Detall de decoració' },
+      { id: 'gallery-10', placeholder: 'Sala grupal en ús' }, { id: 'gallery-11', placeholder: 'Passadís' }, { id: 'gallery-12', placeholder: 'Vista exterior' },
+    ],
+    es: [
+      { id: 'gallery-1', placeholder: 'Sala individual' }, { id: 'gallery-2', placeholder: 'Sala grupal' }, { id: 'gallery-3', placeholder: 'Recepción' },
+      { id: 'gallery-4', placeholder: 'Camilla de terapia' }, { id: 'gallery-5', placeholder: 'Zona de espera' }, { id: 'gallery-6', placeholder: 'Material y consumibles' },
+      { id: 'gallery-7', placeholder: 'Sala con luz natural' }, { id: 'gallery-8', placeholder: 'Entrada del espacio' }, { id: 'gallery-9', placeholder: 'Detalle de decoración' },
+      { id: 'gallery-10', placeholder: 'Sala grupal en uso' }, { id: 'gallery-11', placeholder: 'Pasillo' }, { id: 'gallery-12', placeholder: 'Vista exterior' },
+    ],
+  };
+
+  faqsData = {
+    ca: [
+      { q: 'Puc cancel·lar sense cost?', a: 'Sí. Pots cancel·lar o modificar la teva reserva fins a 15 minuts abans sense cap penalització.' },
+      { q: 'Hi ha permanència o compromís mínim?', a: 'No. El pagament per hores no té cap permanència. Els bons tenen una caducitat de 3-4 mesos per usar-los amb flexibilitat.' },
+      { q: 'Qui s\'encarrega de la neteja i el material fungible?', a: 'Nosaltres. Paper de llitera, tovalloles i consumibles estan sempre disponibles, i la neteja és diària.' },
+      { q: 'Puc portar el meu propi material?', a: 'Sí, pots emmagatzemar material propi si tens una subscripció estable; per a reserves puntuals, tot el necessari ja hi és.' },
+      { q: 'Com sincronitzo l\'agenda amb els meus pacients?', a: 'Vincula el calendari de sales amb Outlook, Google Calendar o Apple Calendar i gestiona les teves cites des d\'un sol lloc.' },
+    ],
+    es: [
+      { q: '¿Puedo cancelar sin coste?', a: 'Sí. Puedes cancelar o modificar tu reserva hasta 15 minutos antes sin ninguna penalización.' },
+      { q: '¿Hay permanencia o compromiso mínimo?', a: 'No. El pago por horas no tiene ninguna permanencia. Los bonos tienen una caducidad de 3-4 meses para usarlos con flexibilidad.' },
+      { q: '¿Quién se encarga de la limpieza y el material fungible?', a: 'Nosotros. Papel de camilla, toallas y consumibles están siempre disponibles, y la limpieza es diaria.' },
+      { q: '¿Puedo traer mi propio material?', a: 'Sí, puedes almacenar material propio si tienes una suscripción estable; para reservas puntuales, todo lo necesario ya está.' },
+      { q: '¿Cómo sincronizo la agenda con mis pacientes?', a: 'Vincula el calendario de salas con Outlook, Google Calendar o Apple Calendar y gestiona tus citas desde un solo lugar.' },
+    ],
+  };
+
+  testimonialsData = {
+    ca: [
+      { quote: 'Espai Llibertat va ser una etapa important en el desenvolupament del meu projecte professional. Em va permetre disposar d\'un espai acollidor on començar a donar forma a la meva manera de treballar, créixer com a fisioterapeuta i consolidar progressivament la meva pràctica. En guardo un record molt positiu, tant per l\'entorn com pel tracte humà rebut. Crec que és una molt bona opció per a professionals que vulguin iniciar o fer créixer el seu projecte amb llibertat i confiança.', name: 'Àngels Monedero', role: 'Fisioterapeuta integrativa', avatarId: 'avatar-angels', linkedin: 'https://www.linkedin.com/in/angelsmonedero/' },
+      { quote: 'Durant més de tres anys, vaig col·laborar amb la Libi a l\'Espai Llibertat, on vaig adquirir molta experiència i vaig desenvolupar la meva pràctica amb total flexibilitat i disponibilitat a l\'espai.\n\nEn aquella etapa em van sorgir noves oportunitats laborals, com la d\'incorporar-me com a fisioterapeuta esportiu al futbol formatiu del FC Barcelona.\n\nEstic molt agraït a la Libi per haver pogut treballar al seu espai, que va ser una gran oportunitat per créixer a nivell professional. Recomano a qualsevol professional col·laborar amb ella per la seva proximitat i professionalitat.', name: 'Martí Soler Torrella', role: 'Fisioterapeuta esportiu i musculoesquelètic', avatarId: 'avatar-marti', linkedin: 'https://www.linkedin.com/in/mart%C3%AD-soler-torrella-414982ba/' },
+      { quote: 'El ioga va arribar a la meva vida el 2015, en un moment de gran esgotament, i em va permetre redescobrir el meu centre i la meva pròpia essència. Després de formar-me en diversos estils, va ser amb l\'Ashtanga Vinyasa que vaig sentir una connexió profunda: la seva disciplina i precisió em van oferir el marc perfecte per a la reconnexió física, mental i emocional. Fa més de deu anys que em dedico exclusivament a ensenyar ioga: he impartit classes a diverses escoles, he creat el meu propi centre i he dirigit formacions per a futurs professors. Per a mi, el ioga no és una pràctica de perfecció, sinó de presència i curiositat.', name: 'Ramon Moles i Domènech', role: 'Instructor de ioga (Ashtanga Vinyasa)', avatarId: 'ramon', avatarSrcOverride: 'uploads/WhatsApp Image 2026-07-28 at 17.45.24.jpeg', linkedin: '' },
+    ],
+    es: [
+      { quote: 'Espai Llibertat fue una etapa importante en el desarrollo de mi proyecto profesional. Me permitió disponer de un espacio acogedor donde empezar a dar forma a mi manera de trabajar, crecer como fisioterapeuta y consolidar progresivamente mi práctica. Guardo un recuerdo muy positivo, tanto por el entorno como por el trato humano recibido. Creo que es una muy buena opción para profesionales que quieran iniciar o hacer crecer su proyecto con libertad y confianza.', name: 'Àngels Monedero', role: 'Fisioterapeuta integrativa', avatarId: 'avatar-angels', linkedin: 'https://www.linkedin.com/in/angelsmonedero/' },
+      { quote: 'Durante más de tres años, colaboré con Libi en Espai Llibertat, donde adquirí mucha experiencia y desarrollé mi práctica con total flexibilidad y disponibilidad en el espacio.\n\nEn aquella etapa me surgieron nuevas oportunidades laborales, como incorporarme como fisioterapeuta deportivo al fútbol formativo del FC Barcelona.\n\nEstoy muy agradecido a Libi por haber podido trabajar en su espacio, que fue una gran oportunidad para crecer a nivel profesional. Recomiendo a cualquier profesional colaborar con ella por su cercanía y profesionalidad.', name: 'Martí Soler Torrella', role: 'Fisioterapeuta deportivo y musculoesquelético', avatarId: 'avatar-marti', linkedin: 'https://www.linkedin.com/in/mart%C3%AD-soler-torrella-414982ba/' },
+      { quote: 'El yoga llegó a mi vida en 2015, en un momento de gran agotamiento, y me permitió redescubrir mi centro y mi propia esencia. Tras formarme en varios estilos, fue con el Ashtanga Vinyasa donde sentí una conexión profunda: su disciplina y precisión me ofrecieron el marco perfecto para la reconexión física, mental y emocional. Hace más de diez años que me dedico exclusivamente a enseñar yoga: he impartido clases en distintas escuelas, he creado mi propio centro y he dirigido formaciones para futuros profesores. Para mí, el yoga no es una práctica de perfección, sino de presencia y curiosidad.', name: 'Ramon Moles i Domènech', role: 'Instructor de yoga (Ashtanga Vinyasa)', avatarId: 'ramon', avatarSrcOverride: 'uploads/WhatsApp Image 2026-07-28 at 17.45.24.jpeg', linkedin: '' },
+    ],
+  };
+
+  renderVals() {
+    const lang = this.state.lang;
+    const t = this.T[lang];
+    const segments = this.segmentsData[lang];
+    const steps = this.stepsData[lang];
+    const services = this.servicesData[lang];
+    const galleryPhotos = this.galleryPhotosData[lang];
+    const faqsData = this.faqsData[lang];
+    const testimonials = this.testimonialsData[lang];
+    const roomTabs = this.roomTabsData[lang];
+
+    return {
+      lang, t,
+      isMobile: this.state.isMobile,
+      isMobileOnly: this.state.isMobileOnly,
+      mobileBtnStyle: this.state.isMobileOnly ? 'width:100%;' : '',
+      mobileLinkStyle: this.state.isMobileOnly ? 'display:grid; width:100%;' : '',
+      segmentsCols: this.state.isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+      servicesCols: this.state.isMobileOnly ? 'repeat(1, 1fr)' : (this.state.isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)'),
+      showDesktopNav: !this.state.isMobile,
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      mobileMenuIcon: this.state.mobileMenuOpen ? 'x' : 'menu',
+      toggleMobileMenu: this.toggleMobileMenu,
+      closeMobileMenu: this.closeMobileMenu,
+      galleryArrowOffset: this.state.isMobile ? '4px' : '-20px',
+      setLangCa: () => this.setState({ lang: 'ca' }),
+      setLangEs: () => this.setState({ lang: 'es' }),
+      caBg: lang === 'ca' ? 'var(--color-primary)' : 'var(--color-canvas)',
+      caColor: lang === 'ca' ? 'var(--color-on-primary)' : 'var(--color-ink-muted)',
+      esBg: lang === 'es' ? 'var(--color-primary)' : 'var(--color-canvas)',
+      esColor: lang === 'es' ? 'var(--color-on-primary)' : 'var(--color-ink-muted)',
+      segments: segments.map((s) => ({ ...s, imgStyle: `width:72px; height:72px; background-image:url(${this.resolveAsset(s.image)}); background-size:contain; background-repeat:no-repeat; background-position:center;` })),
+      services: services.map((sv) => ({ ...sv, imgStyle: `width:72px; height:72px; background-image:url(${this.resolveAsset(sv.image)}); background-size:contain; background-repeat:no-repeat; background-position:center;`, mailHref: this.buildMailto(sv.mailSubject) })),
+      steps: steps.map((st, i) => ({
+        ...st,
+        expanded: this.state.expandedStep === i,
+        chevronIcon: this.state.expandedStep === i ? 'chevron-up' : 'chevron-down',
+        toggle: () => this.setState(s => ({ expandedStep: s.expandedStep === i ? -1 : i })),
+      })),
+      galleryPhotos: galleryPhotos.map((g, i) => ({ ...g, imgStyle: `width:100%; height:100%; border-radius:12px; background-image:url(${this.slotImage(g.id)}); background-size:cover; background-position:center;`, open: () => this.setState({ lightboxIndex: i }) })),
+      galleryRef: this.galleryRef,
+      scrollGalleryLeft: this.scrollGalleryLeft,
+      scrollGalleryRight: this.scrollGalleryRight,
+      lightboxOpen: this.state.lightboxIndex !== null,
+      lightboxImgId: this.state.lightboxIndex !== null ? galleryPhotos[this.state.lightboxIndex].id : '',
+      lightboxImgStyle: this.state.lightboxIndex !== null ? `width:100%; height:100%; border-radius:12px; background-image:url(${this.slotImage(galleryPhotos[this.state.lightboxIndex].id)}); background-size:contain; background-repeat:no-repeat; background-position:center;` : '',
+      lightboxPlaceholder: this.state.lightboxIndex !== null ? galleryPhotos[this.state.lightboxIndex].placeholder : '',
+      closeLightbox: this.closeLightbox,
+      stopPropagation: this.stopPropagation,
+      roomTabs,
+      roomType: this.state.roomType,
+      setRoomType: (v) => this.setState({ roomType: v }),
+      pricing: this.pricingByRoom[lang][this.state.roomType].map((p) => ({ ...p, mailHref: this.buildMailto(p.mailSubject) })),
+      mailtoReserva: this.buildMailto(lang === 'ca' ? 'M\'agradaria reservar una hora' : 'Me gustaría reservar una hora'),
+      mailtoVisita: this.buildMailto(lang === 'ca' ? 'M\'agradaria visitar l\'espai' : 'Me gustaría visitar el espacio'),
+      mailtoFranjaFixa: this.buildMailto(lang === 'ca' ? 'Sol·licitud d\'informació sobre franja fixa setmanal o ús intensiu' : 'Solicitud de información sobre franja fija semanal o uso intensivo'),
+      mailtoDubtesSales: this.buildMailto(lang === 'ca' ? 'Tinc dubtes sobre les sales d\'Espai Llibertat' : 'Tengo dudas sobre las salas de Espai Llibertat'),
+      waLink: this.buildWa(lang === 'ca' ? 'M\'agradaria sol·licitar més informació de l\'espai Llibertat' : 'Me gustaría solicitar más información del espacio Llibertat'),
+      testimonials,
+      testimonialPhotoColWidth: (this.props.testimonialPhotoWidth ?? 96) + 'px',
+      testimonialPhotoRadius: this.props.testimonialPhotoShape === 'square' ? 'var(--radius-md)' : '50%',
+      showLinkedinIcon: this.props.showLinkedinIcon ?? true,
+      testimonialsTrackStyle: 'display:flex; gap:20px; animation: testimonial-scroll 30s linear infinite; width:max-content;',
+      testimonialsDisplay: [...testimonials, ...testimonials].map((tm, i) => ({
+        ...tm,
+        avatarStyle: `width:100%; aspect-ratio:1; border-radius:${this.props.testimonialPhotoShape === 'square' ? 'var(--radius-md)' : '50%'}; background-image:url(${this.avatarSrcFor(tm)}); background-size:cover; background-position:center;`,
+        needsExpand: tm.quote.length > 150,
+        openModal: () => this.setState({ activeTestimonialIndex: i % testimonials.length }),
+      })),
+      activeTestimonial: this.state.activeTestimonialIndex !== null ? { ...testimonials[this.state.activeTestimonialIndex], avatarStyle: `width:52px; height:52px; flex-shrink:0; border-radius:50%; background-image:url(${this.avatarSrcFor(testimonials[this.state.activeTestimonialIndex])}); background-size:cover; background-position:center;` } : { name: '', role: '', quote: '', avatarId: '', avatarStyle: '' },
+      testimonialModalOpen: this.state.activeTestimonialIndex !== null,
+      closeTestimonialModal: () => this.setState({ activeTestimonialIndex: null }),
+      faqs: faqsData.map((f, i) => ({
+        ...f,
+        open: this.state.openFaq === i,
+        symbol: this.state.openFaq === i ? '−' : '+',
+        toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
