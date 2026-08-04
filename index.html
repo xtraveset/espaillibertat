@@ -8,15 +8,18 @@
 <body>
 <x-dc>
 <helmet>
-  <title>{{ t.metaTitle }}</title>
-  <meta name="description" content="{{ t.metaDesc }}"/>
+  <title>Espai Llibertat — Coworking de Salut a Vilanova i la Geltrú</title>
+  <meta name="description" content="Lloga sales de salut per hores, bons o subscripció a Vilanova i la Geltrú. Sense permanència, tot inclòs. Primera hora de visita gratuïta."/>
   <link rel="canonical" href="https://www.espaillibertat.es"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Espai Llibertat"/>
-  <meta property="og:title" content="{{ t.metaTitle }}"/>
-  <meta property="og:description" content="{{ t.metaDesc }}"/>
+  <meta property="og:title" content="Espai Llibertat — Coworking de Salut a Vilanova i la Geltrú"/>
+  <meta property="og:description" content="Lloga sales de salut per hores, bons o subscripció a Vilanova i la Geltrú. Sense permanència, tot inclòs. Primera hora de visita gratuïta."/>
   <meta property="og:image" content="uploads/Social Image.svg"/>
-  <meta property="og:locale" content="{{ t.ogLocale }}"/>
+  <meta property="og:locale" content="ca_ES"/>
+  <!-- Fallback estàtic: aquests valors es sobreescriuen dinàmicament amb JS (t.metaTitle/t.metaDesc)
+       segons l'idioma triat per l'usuari, però els crawlers/scrapers sense JS (Facebook, LinkedIn,
+       WhatsApp preview, alguns bots) ara veuen contingut real en lloc del placeholder {{ t.metaTitle }}. -->
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="stylesheet" href="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/tokens/colors.css">
   <link rel="stylesheet" href="_ds/espai-llibertat-design-system-7b883105-42e6-4b85-85e8-d0c2ac005bb3/tokens/typography.css">
@@ -59,6 +62,40 @@
     a { color: var(--color-primary); }
     a:hover { color: var(--color-primary-hover); }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "name": "Espai Llibertat",
+        "description": "Lloga sales de salut per hores, bons o subscripció a Vilanova i la Geltrú. Sense permanència, tot inclòs.",
+        "url": "https://www.espaillibertat.es",
+        "telephone": "+34660913103",
+        "email": "libertad.cg@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Carrer de la Llibertat 63, planta baixa",
+          "addressLocality": "Vilanova i la Geltrú",
+          "postalCode": "08800",
+          "addressRegion": "Barcelona",
+          "addressCountry": "ES"
+        },
+        "priceRange": "15€-450€"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "Puc cancel·lar sense cost?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Pots cancel·lar o modificar la teva reserva fins a 15 minuts abans sense cap penalització."}},
+          {"@type": "Question", "name": "Hi ha permanència o compromís mínim?", "acceptedAnswer": {"@type": "Answer", "text": "No. El pagament per hores no té cap permanència. Els bons tenen una caducitat de 3-4 mesos per usar-los amb flexibilitat."}},
+          {"@type": "Question", "name": "Qui s'encarrega de la neteja i el material fungible?", "acceptedAnswer": {"@type": "Answer", "text": "Nosaltres. Paper de llitera, tovalloles i consumibles estan sempre disponibles, i la neteja és diària."}},
+          {"@type": "Question", "name": "Puc portar el meu propi material?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, pots emmagatzemar material propi si tens una subscripció estable; per a reserves puntuals, tot el necessari ja hi és."}},
+          {"@type": "Question", "name": "Com sincronitzo l'agenda amb els meus pacients?", "acceptedAnswer": {"@type": "Answer", "text": "Vincula el calendari de sales amb Outlook, Google Calendar o Apple Calendar i gestiona les teves cites des d'un sol lloc."}}
+        ]
+      }
+    ]
+  }
+  </script>
 </helmet>
 
 <div lang="{{ lang }}" style="font-family: var(--font-body); color: var(--color-ink); background: var(--color-canvas);">
