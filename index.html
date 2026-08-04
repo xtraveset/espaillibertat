@@ -81,7 +81,7 @@
           "addressRegion": "Barcelona",
           "addressCountry": "ES"
         },
-        "priceRange": "15€-450€"
+        "priceRange": "15€-800€"
       },
       {
         "@type": "FAQPage",
@@ -581,7 +581,7 @@ class Component extends DCLogic {
       addressLabel: 'Adreça', nearTrain: 'Molt a prop de l\'estació de Renfe', mapTitle: 'mapa',
       finalCtaTitle: 'Vols visitar l\'espai abans de decidir?', finalCtaDesc: 'La primera hora és totalment gratuïta i sense compromís. T\'ensenyem les sales i resolem els teus dubtes.',
       contactWhatsapp: 'Contactar per WhatsApp', sendEmail: 'Enviar un email',
-      footerTagline: 'Coworking de salut a Vilanova i la Geltrú. L\'espai que et deixa créixer com a professional de la salut.',
+      footerTagline: 'Coworking de salut a Vilanova i la Geltrú. L\'espai que et deixa créixer com a professional de la salut. Espai propietat d\'una fisioterapeuta col·legiada núm. 8622 (UAB).',
       footerExplore: 'Explora', footerLegal: 'Legal', footerContact: 'Contacte',
       legalNotice: 'Avís legal', privacyPolicy: 'Política de privadesa', cookiesPolicy: 'Política de cookies',
     },
@@ -614,7 +614,7 @@ class Component extends DCLogic {
       addressLabel: 'Dirección', nearTrain: 'Muy cerca de la estación de Renfe', mapTitle: 'mapa',
       finalCtaTitle: '¿Quieres visitar el espacio antes de decidir?', finalCtaDesc: 'La primera hora es totalmente gratuita y sin compromiso. Te enseñamos las salas y resolvemos tus dudas.',
       contactWhatsapp: 'Contactar por WhatsApp', sendEmail: 'Enviar un email',
-      footerTagline: 'Coworking de salud en Vilanova i la Geltrú. El espacio que te deja crecer como profesional de la salud.',
+      footerTagline: 'Coworking de salud en Vilanova i la Geltrú. El espacio que te deja crecer como profesional de la salud. Espacio propiedad de una fisioterapeuta colegiada núm. 8622 (UAB).',
       footerExplore: 'Explora', footerLegal: 'Legal', footerContact: 'Contacto',
       legalNotice: 'Aviso legal', privacyPolicy: 'Política de privacidad', cookiesPolicy: 'Política de cookies',
     },
@@ -630,7 +630,8 @@ class Component extends DCLogic {
       individual: [
         { stage: 'Prova', title: 'Pagament per ús', prices: [{ price: '15€', unit: '/hora' }], desc: 'Ideal per a visites esporàdiques o primeres sessions, sense compromís.', cta: 'Comença ara', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria començar amb el pagament per ús (sala individual)' },
         { stage: 'Recurrent', title: 'Bos d\'Hores', prices: [{ price: '120€', unit: 'Bo 10h · 12€/h' }, { price: '250€', unit: 'Bo 25h · 10€/h' }], desc: 'Caducitat de 3-4 mesos. Prioritat de reserva i ús flexible.', cta: 'Sol·licitar bo', variant: 'primary', popular: true, mailSubject: 'Sol·licitud d\'informació sobre el Bo d\'Hores' },
-        { stage: 'Estable', title: 'Subscripció Mensual', prices: [{ price: '280€', unit: '/mes' }], desc: 'Franja fixa assegurada de matí o tarda i presència al directori de professionals.', cta: 'Parlem-ne', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria parlar sobre la subscripció mensual' },
+        { stage: 'Estable', title: 'Subscripció Mensual (mitja jornada)', prices: [{ price: '450€', unit: '/mes' }], desc: 'Franja fixa assegurada de matí o tarda (aprox. 84h/mes) i presència al directori de professionals.', cta: 'Parlem-ne', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria parlar sobre la subscripció mensual de mitja jornada' },
+        { stage: 'Estable', title: 'Subscripció Mensual (jornada completa)', prices: [{ price: '800€', unit: '/mes' }], desc: 'Matí i tarda cada dia (aprox. 168h/mes), exclusivitat total de la sala i presència al directori de professionals.', cta: 'Parlem-ne', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria parlar sobre la subscripció mensual de jornada completa' },
       ],
       grupal: [
         { stage: 'Prova', title: 'Pagament per ús', prices: [{ price: '25€', unit: '/hora' }], desc: 'Perfecte per a classes o tallers de 4-6 persones.', cta: 'Comença ara', variant: 'secondary', popular: false, mailSubject: 'M\'agradaria començar amb el pagament per ús (sala grupal)' },
@@ -642,7 +643,8 @@ class Component extends DCLogic {
       individual: [
         { stage: 'Prueba', title: 'Pago por uso', prices: [{ price: '15€', unit: '/hora' }], desc: 'Ideal para visitas esporádicas o primeras sesiones, sin compromiso.', cta: 'Empieza ahora', variant: 'secondary', popular: false, mailSubject: 'Me gustaría empezar con el pago por uso (sala individual)' },
         { stage: 'Recurrente', title: 'Bonos de Horas', prices: [{ price: '120€', unit: 'Bono 10h · 12€/h' }, { price: '250€', unit: 'Bono 25h · 10€/h' }], desc: 'Caducidad de 3-4 meses. Prioridad de reserva y uso flexible.', cta: 'Solicitar bono', variant: 'primary', popular: true, mailSubject: 'Solicitud de información sobre el Bono de Horas' },
-        { stage: 'Estable', title: 'Suscripción Mensual', prices: [{ price: '280€', unit: '/mes' }], desc: 'Franja fija asegurada de mañana o tarde y presencia en el directorio de profesionales.', cta: 'Hablemos', variant: 'secondary', popular: false, mailSubject: 'Me gustaría hablar sobre la suscripción mensual' },
+        { stage: 'Estable', title: 'Suscripción Mensual (media jornada)', prices: [{ price: '450€', unit: '/mes' }], desc: 'Franja fija asegurada de mañana o tarde (aprox. 84h/mes) y presencia en el directorio de profesionales.', cta: 'Hablemos', variant: 'secondary', popular: false, mailSubject: 'Me gustaría hablar sobre la suscripción mensual de media jornada' },
+        { stage: 'Estable', title: 'Suscripción Mensual (jornada completa)', prices: [{ price: '800€', unit: '/mes' }], desc: 'Mañana y tarde cada día (aprox. 168h/mes), exclusividad total de la sala y presencia en el directorio de profesionales.', cta: 'Hablemos', variant: 'secondary', popular: false, mailSubject: 'Me gustaría hablar sobre la suscripción mensual de jornada completa' },
       ],
       grupal: [
         { stage: 'Prueba', title: 'Pago por uso', prices: [{ price: '25€', unit: '/hora' }], desc: 'Perfecto para clases o talleres de 4-6 personas.', cta: 'Empieza ahora', variant: 'secondary', popular: false, mailSubject: 'Me gustaría empezar con el pago por uso (sala grupal)' },
