@@ -1,0 +1,118 @@
+[
+ {
+  "id": "slot_hero_photo",
+  "uuid": "b125bc1b-655f-496b-9788-f2e6889d580c"
+ },
+ {
+  "id": "slot_gallery_6",
+  "uuid": "78e965e8-cfae-47eb-866a-566fd0afc82a"
+ },
+ {
+  "id": "slot_gallery_4",
+  "uuid": "17509feb-c36b-402d-b12d-92b21eea9b04"
+ },
+ {
+  "id": "slot_gallery_11",
+  "uuid": "7da82826-ca34-406b-bfab-4bd8a7006571"
+ },
+ {
+  "id": "slot_avatar_marti",
+  "uuid": "8834c9a9-3795-4d49-89ee-9160e3c78ddb"
+ },
+ {
+  "id": "slot_avatar_angels",
+  "uuid": "46b399ed-65f1-4c40-9cbf-5e571eba7fff"
+ },
+ {
+  "id": "service_wifi",
+  "uuid": "30c2be7c-549d-4e94-bf03-3eac32fcdd76"
+ },
+ {
+  "id": "slot_gallery_7",
+  "uuid": "815597f1-9a3e-42e1-b148-316b4f9efa5a"
+ },
+ {
+  "id": "slot_gallery_8",
+  "uuid": "93992a96-3189-441d-bd5d-8322483f31f9"
+ },
+ {
+  "id": "slot_gallery_12",
+  "uuid": "d7a13303-7a5a-4f0e-9070-1733206af614"
+ },
+ {
+  "id": "slot_gallery_9",
+  "uuid": "7aaeace2-25f5-4063-9945-637e672b6492"
+ },
+ {
+  "id": "slot_gallery_5",
+  "uuid": "bb2a8738-2ca6-450f-8994-a5c95316c40b"
+ },
+ {
+  "id": "slot_gallery_10",
+  "uuid": "ed0a7022-833b-4397-b2f8-c6f3620c1211"
+ },
+ {
+  "id": "slot_gallery_1",
+  "uuid": "5b4e6125-9b4f-4ed4-b3fe-e2cd621388ab"
+ },
+ {
+  "id": "slot_gallery_2",
+  "uuid": "d280ac65-5d94-4753-8070-7f8c645ceaaa"
+ },
+ {
+  "id": "segment_entrenadors",
+  "uuid": "20b0f4a2-4d79-4859-a1af-657257e59060"
+ },
+ {
+  "id": "slot_gallery_3",
+  "uuid": "a12f55bd-6e4c-4d04-acbf-dfe06236a658"
+ },
+ {
+  "id": "service_entorn",
+  "uuid": "97b8ef66-ef37-4a34-aca6-b3971dd5b201"
+ },
+ {
+  "id": "service_climatitzacio",
+  "uuid": "7795981c-8507-40de-a8fa-53c8d6861a9f"
+ },
+ {
+  "id": "WhatsApp_Image_2026_07_28_at_17_45_24",
+  "uuid": "01e43bbf-f4df-4864-bea4-a2c69b66b0d7"
+ },
+ {
+  "id": "segment_fisio",
+  "uuid": "85eb8bfb-8507-4ade-96bc-5869d28c98e9"
+ },
+ {
+  "id": "segment_beauty",
+  "uuid": "804a950e-1fcb-457f-96f5-b6862d144720"
+ },
+ {
+  "id": "service_sala_grupal",
+  "uuid": "945e4efd-c22b-4a7b-a96a-49bcf144f175"
+ },
+ {
+  "id": "service_residus",
+  "uuid": "2e33b3f0-cae7-4368-b0ab-7a4d9f828e84"
+ },
+ {
+  "id": "segment_nutricio",
+  "uuid": "1b07830c-64d2-4571-a29f-a9622ed9ffc5"
+ },
+ {
+  "id": "service_consumibles",
+  "uuid": "424adf6f-fd15-4484-8a2a-26c59ed59a91"
+ },
+ {
+  "id": "service_prereserva",
+  "uuid": "5c9cb930-fb5d-4725-8497-d9181412b823"
+ },
+ {
+  "id": "https://unpkg.com/react@18.3.1/umd/react.production.min.js",
+  "uuid": "30be3625-88da-4aee-a2b4-e582c8dbe9db"
+ },
+ {
+  "id": "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js",
+  "uuid": "edf42dc5-bf31-4e8f-8969-1f52ddeec239"
+ }
+]
