@@ -61,6 +61,7 @@
   function openOverlay(el) { el.hidden = false; document.body.style.overflow = 'hidden'; var c = $('[data-action^="close"]', el); if (c) c.focus(); }
   function closeOverlay(el) { el.hidden = true; document.body.style.overflow = ''; }
   var lastFocus = null;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-action]');
@@ -76,6 +77,14 @@
       var mm = $('#mobile-menu'); if (mm && !mm.hidden) setMenu(false);
       return;
     }
+    var lbx = $('#lightbox');
+    if (lbx && !lbx.hidden && e.key === 'Tab') {
+      var f = $$('button', lbx), first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !lbx.contains(document.activeElement))) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && (document.activeElement === last || !lbx.contains(document.activeElement))) { e.preventDefault(); first.focus(); }
+      return;
+    }
+    if (lbx && !lbx.hidden && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { lbShow(lbIdx + (e.key === 'ArrowRight' ? 1 : -1)); return; }
     if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[role="button"][data-action]')) {
       e.preventDefault(); handle(e.target.getAttribute('data-action'), e.target, e);
     }
@@ -88,6 +97,72 @@
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     var use = $('use', btn); if (use) use.setAttribute('href', open ? '#i-x' : '#i-menu');
   }
+
+  /* ---------- Galeria (lightbox amb navegació) ---------- */
+  var lbIdx = 0, lbPre = {};
+  function lbSrc(n) { return D && D.gallerySrc[n]; }
+  function lbAlt(n) { var im = $$('#gallery-track img')[n]; return (im && im.getAttribute('alt')) || (D && D.gallery[n]) || ''; }
+  function lbShow(n) {
+    if (!D) return; var len = D.gallerySrc.length; lbIdx = (n + len) % len;
+    var img = $('#lb-img'); if (!img) return;
+    img.classList.add('ld'); img.onload = function () { img.classList.remove('ld'); };
+    img.src = lbSrc(lbIdx); img.alt = lbAlt(lbIdx);
+    var cap = $('#lb-cap'); if (cap) cap.textContent = lbAlt(lbIdx);
+    var c = $('#lb-count'); if (c) c.textContent = (lbIdx + 1) + ' / ' + len;
+    [lbIdx + 1, lbIdx - 1].forEach(function (k) { var j = (k + len) % len; if (!lbPre[j]) { lbPre[j] = new Image(); lbPre[j].src = lbSrc(j); } });
+  }
+  (function () {
+    var lb = $('#lightbox'); if (!lb) return; var x0 = null, y0 = 0;
+    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) lbShow(lbIdx + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+  })();
+
+  /* ---------- Testimonis (carrusel en mòbil) ---------- */
+  function testiTrack() { return $('#testi-track'); }
+  function testiItems() { return $$('.testi-item:not(.testi-dup)'); }
+  function testiIdx() { var tr = testiTrack(), it = testiItems(); if (!tr || !it.length) return 0; var w = it[0].offsetWidth + 14; return Math.max(0, Math.min(it.length - 1, Math.round(tr.scrollLeft / w))); }
+  var tgt = null, tgtT = 0;
+  function testiCur() { return tgt !== null && Date.now() - tgtT < 800 ? tgt : testiIdx(); }
+  function testiGo(i) { var tr = testiTrack(), it = testiItems(); if (!tr || !it.length) return; i = (i + it.length) % it.length; tgt = i; tgtT = Date.now(); tr.scrollTo({ left: it[i].offsetLeft - tr.offsetLeft - 2, behavior: reduce ? 'auto' : 'smooth' }); }
+  (function () {
+    var tr = testiTrack(); if (!tr) return; var ticking = false;
+    tr.addEventListener('scroll', function () {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false; var i = testiIdx();
+        $$('.testi-dots button').forEach(function (b, k) { if (k === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+      });
+    }, { passive: true });
+  })();
+
+  /* ---------- Enllaços d'ancoratge sense "#" a l'URL + secció activa ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"], a[data-top]'); if (!a || e.defaultPrevented) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+    var id = a.hasAttribute('data-top') ? '' : a.getAttribute('href').slice(1);
+    if (!id) { e.preventDefault(); window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); return; }
+    var el = document.getElementById(id); if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+    try { el.focus({ preventScroll: true }); } catch (er) {}
+  });
+  if ('IntersectionObserver' in window) {
+    var links = $$('.nav-desktop a[href^="#"], .mobile-menu a[href^="#"]');
+    var io = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        if (!en.isIntersecting) return; var id = en.target.id ? '#' + en.target.id : '';
+        links.forEach(function (l) { if (id && l.getAttribute('href') === id) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current'); });
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    $$('main > section').forEach(function (sec) { io.observe(sec); });
+  }
+  if (window.matchMedia) { var mq = matchMedia('(min-width: 1181px)'); var mqf = function (q) { if (q.matches) setMenu(false); }; if (mq.addEventListener) mq.addEventListener('change', mqf); }
+  var hd = $('header');
+  if (hd && window.ResizeObserver) new ResizeObserver(function (en) { var h = Math.round(en[0].borderBoxSize && en[0].borderBoxSize[0] ? en[0].borderBoxSize[0].blockSize : en[0].contentRect.height); if (h) document.documentElement.style.setProperty('--hh', h + 'px'); }).observe(hd);
 
   function handle(a, t, e) {
     switch (a) {
@@ -119,14 +194,12 @@
         var tr = $('#gallery-track'); if (tr) tr.scrollBy({ left: a === 'gallery-prev' ? -320 : 320, behavior: 'smooth' });
         break;
       }
-      case 'lightbox': {
-        var n = +t.getAttribute('data-index'); var lb = $('#lightbox'); if (!lb || !D) break;
-        var box = $('[role="img"]', lb);
-        box.setAttribute('aria-label', D.gallery[n]);
-        box.style.cssText = 'width:100%; height:100%; border-radius:12px; background-image:url(' + D.gallerySrc[n] + '); background-size:contain; background-repeat:no-repeat; background-position:center;';
-        lastFocus = t; openOverlay(lb);
-        break;
-      }
+      case 'lightbox': { lastFocus = t; lbShow(+t.getAttribute('data-index')); openOverlay($('#lightbox')); break; }
+      case 'lb-prev': lbShow(lbIdx - 1); break;
+      case 'lb-next': lbShow(lbIdx + 1); break;
+      case 'testi-prev': testiGo(testiCur() - 1); break;
+      case 'testi-next': testiGo(testiCur() + 1); break;
+      case 'testi-go': testiGo(+t.getAttribute('data-index')); break;
       case 'close-lightbox': closeOverlay($('#lightbox')); if (lastFocus) lastFocus.focus(); break;
       case 'testi': {
         var m = $('#testi-modal'); if (!m || !D) break;
