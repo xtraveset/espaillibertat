@@ -35,13 +35,23 @@
   }
   var bar = $('#cookie-bar');
   var consent = getConsent();
+  function barState(open) { if (bar) { bar.hidden = !open; document.body.classList.toggle('has-cookie', open); if (open) requestAnimationFrame(function () { document.body.style.setProperty('--cb-h', bar.offsetHeight + 'px'); }); } }
   if (consent === 'granted') loadGA();
-  else if (!consent && bar) bar.hidden = false;
+  else if (!consent && bar) {
+    // El banner apareix a la primera interacció (o als 6 s) perquè no tapi la crida principal en arribar
+    var shown = false, evs = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
+    var showBar = function () {
+      if (shown) return; shown = true; barState(true);
+      evs.forEach(function (ev) { window.removeEventListener(ev, showBar); });
+    };
+    evs.forEach(function (ev) { window.addEventListener(ev, showBar, { passive: true }); });
+    setTimeout(showBar, 6000);
+  }
   $$('[data-consent]').forEach(function (b) {
     b.addEventListener('click', function () {
       var v = b.getAttribute('data-consent');
       setConsent(v);
-      if (bar) bar.hidden = true;
+      barState(false);
       if (v === 'granted') loadGA();
       else { clearGACookies(); if (gaLoaded) location.reload(); }
     });
@@ -130,7 +140,7 @@
         break;
       }
       case 'close-modal': closeOverlay($('#testi-modal')); if (lastFocus) lastFocus.focus(); break;
-      case 'cookie-settings': if (bar) { bar.hidden = false; var btn = $('button', bar); if (btn) btn.focus(); } break;
+      case 'cookie-settings': if (bar) { barState(true); var btn = $('button', bar); if (btn) btn.focus(); } break;
     }
   }
 
@@ -160,6 +170,7 @@
   function calc() {
     var inp = $('#calc-hours'); if (!inp || !D) return;
     var h = +inp.value, n = D.plan, best;
+    inp.style.setProperty('--p', ((h - (+inp.min)) / ((+inp.max) - (+inp.min)) * 100) + '%');
     if (room === 'individual') {
       var opts = [{ id: 'payg', cost: 15 * h, ok: true }, { id: 'bo10', cost: 12 * h, ok: h >= 4 },
         { id: 'bo25', cost: 10 * h, ok: h >= 8 }, { id: 'sub', cost: 280, ok: h >= 20 }].filter(function (o) { return o.ok; });
@@ -177,10 +188,66 @@
     var sv = $('[data-calc="saving"]'); if (sv) sv.hidden = !(saving > 0);
     var cu = $('[data-calc="custom"]'); if (cu) cu.hidden = best.cost != null;
     var sala = room === 'individual' ? 'sala individual' : 'sala grupal';
-    var subj = D.lang === 'ca' ? 'Interès en el pla ' + n[best.id] + ' (' + sala + ', ~' + h + ' h/mes)'
-      : 'Interés en el plan ' + n[best.id] + ' (' + sala + ', ~' + h + ' h/mes)';
-    var cta = $('[data-calc-cta]'); if (cta) cta.href = 'mailto:libertad.cg@hotmail.com?subject=' + encodeURIComponent(subj);
+    var msg = D.lang === 'ca' ? "Hola! M'interessa el pla " + n[best.id] + ' (' + sala + ', ~' + h + ' h/mes).'
+      : '¡Hola! Me interesa el plan ' + n[best.id] + ' (' + sala + ', ~' + h + ' h/mes).';
+    var cta = $('[data-calc-cta]');
+    if (cta) {
+      cta.href = 'https://wa.me/34660913103?text=' + encodeURIComponent(msg).replace(/%21/g, '!').replace(/%27/g, "'");
+      cta.target = '_blank'; cta.rel = 'noopener'; cta.setAttribute('data-wa', 'calculadora');
+    }
   }
   var inp = $('#calc-hours');
   if (inp) inp.addEventListener('input', calc);
+  /* ---------- Pastilla de WhatsApp: apareix ja col·locada (sense salts de layout) ---------- */
+  requestAnimationFrame(function () { requestAnimationFrame(function () { var f = $('.wa-float'); if (f) f.classList.add('on'); }); });
+
+  /* ---------- Mòbil: la pastilla s'amaga mentre la crida principal del hero és visible ---------- */
+  (function holdPill() {
+    var pill = $('.wa-float');
+    if (!pill || !('IntersectionObserver' in window)) return;
+    requestAnimationFrame(function () {
+      var cta = $$('a[data-wa="hero"]').filter(function (a) { return a.offsetParent !== null; })[0];
+      if (!cta) return;
+      new IntersectionObserver(function (en) { pill.classList.toggle('hold', en[0].isIntersecting); }, { threshold: 0.6 }).observe(cta);
+    });
+  })();
+
+  /* ---------- Mesura de leads: clics a WhatsApp / correu / telèfon -> GA4 ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-wa], a[href^="mailto:"], a[href^="tel:"], a[data-ig]');
+    if (!a || typeof window.gtag !== 'function') return;
+    var wa = a.hasAttribute('data-wa'), ig = a.hasAttribute('data-ig');
+    var method = wa ? 'whatsapp' : ig ? 'instagram' : a.href.indexOf('mailto:') === 0 ? 'email' : 'phone';
+    window.gtag('event', ig ? 'click_instagram' : 'generate_lead', {
+      method: method,
+      link_location: a.getAttribute('data-wa') || a.getAttribute('data-ig') || 'page',
+      page_language: D ? D.lang : document.documentElement.lang
+    });
+  });
+
+  /* ---------- Entrada suau de seccions (respecta prefers-reduced-motion) ---------- */
+  (function reveal() {
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var run = function () {
+      var vh = window.innerHeight || 800;
+      var targets = $$('body section').filter(function (s) { return s.getBoundingClientRect().top > vh * 0.9; });
+      if (!targets.length) return;
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+      targets.forEach(function (s) { s.classList.add('rv'); io.observe(s); });
+      // xarxa de seguretat: si per qualsevol motiu l'observador no dispara, mostra-ho tot
+      setTimeout(function () { targets.forEach(function (s) { s.classList.add('in'); }); }, 6000);
+    };
+    // després del primer pintat, per no forçar un reflow durant la càrrega
+    if (window.requestIdleCallback) window.requestIdleCallback(run, { timeout: 800 }); else setTimeout(run, 200);
+  })();
+
+  /* ---------- Obertura directa dels HTML (file://): enllaços de carpeta -> index.html ---------- */
+  if (location.protocol === 'file:') {
+    $$('a[href]').forEach(function (a) {
+      var h = a.getAttribute('href');
+      if (/^(\.\.?\/|es\/)$/.test(h) || /\/$/.test(h) && !/^[a-z]+:/i.test(h)) a.setAttribute('href', h + 'index.html');
+    });
+  }
 })();

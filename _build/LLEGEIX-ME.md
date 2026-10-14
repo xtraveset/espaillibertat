@@ -10,3 +10,6 @@ Per regenerar-ho tot des de la plantilla original:
 1. `npm i lucide-static` i `pip install beautifulsoup4 pillow`
 2. Copia `plantilles/*` a la carpeta de treball com a `index/`, `avis-legal/`, etc.
 3. `node dump.js` → `vals.json`; `python3 build.py`; `python3 legal.py`
+
+## Nota de manteniment (oct 2026)
+El web es manté ara editant directament `index.html` i `es/index.html` (les plantilles de `_build/` ja no són la font de veritat). Les imatges originals sense processar són a `_build/img-originals/`.
