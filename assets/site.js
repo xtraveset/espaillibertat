@@ -229,6 +229,7 @@
       b.style.borderBottomColor = on ? 'var(--color-primary)' : 'transparent';
     });
     var sum = $('[data-room-summary]'); if (sum && D) sum.textContent = D.summary[r];
+    var cw = $('[data-calc-wrap]'); if (cw) cw.style.display = r === 'grupal' ? 'none' : '';
     var inp = $('#calc-hours');
     if (inp) {
       var max = r === 'grupal' ? 16 : 40;
@@ -246,10 +247,10 @@
     inp.style.setProperty('--p', ((h - (+inp.min)) / ((+inp.max) - (+inp.min)) * 100) + '%');
     if (room === 'individual') {
       var opts = [{ id: 'payg', cost: 15 * h, ok: true }, { id: 'bo10', cost: 12 * h, ok: h >= 4 },
-        { id: 'bo25', cost: 10 * h, ok: h >= 8 }, { id: 'sub', cost: 280, ok: h >= 20 }].filter(function (o) { return o.ok; });
+        { id: 'bo25', cost: 10 * h, ok: h >= 8 }].filter(function (o) { return o.ok; });
       best = opts.reduce(function (a, b) { return b.cost < a.cost ? b : a; });
     } else {
-      best = h <= 4 ? { id: 'payg', cost: 25 * h } : h <= 8 ? { id: 'pack', cost: 120 } : { id: 'full', cost: null };
+      best = { id: 'payg', cost: 25 * h };
     }
     var base = (room === 'individual' ? 15 : 25) * h;
     var saving = best.cost != null ? base - best.cost : 0;
